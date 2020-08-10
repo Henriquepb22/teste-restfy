@@ -8,14 +8,11 @@
     vertical-align: baseline;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-html {
     font-family: "Montserrat";
 }
 
 body {
-    background: $lightGray;
+    background-color: $lightGray !important;
 }
 
 ul {

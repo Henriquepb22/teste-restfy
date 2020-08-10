@@ -10,7 +10,7 @@ const PaymentCycleSelect: React.FC = () => {
     };
 
     return (
-        <Row className="justify-content-center text-center">
+        <Row as="section" className="justify-content-center text-center">
             <Form>
                 <Form.Label>Quero pagar a cada:</Form.Label>
                 <Form.Group
@@ -25,6 +25,7 @@ const PaymentCycleSelect: React.FC = () => {
                         value={36}
                         id="36"
                         name="selectedCycle"
+                        defaultChecked
                     />
                     <Form.Check
                         inline

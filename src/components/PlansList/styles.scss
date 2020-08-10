@@ -1,0 +1,14 @@
+@import "colors";
+
+// Cores Customizadas dos botões de adiantar e de voltar os slides do carousel
+.slick-arrow.slick-prev {
+    &:before {
+        color: $blue;
+    }
+}
+
+.slick-arrow.slick-next {
+    &:before {
+        color: $blue;
+    }
+}
