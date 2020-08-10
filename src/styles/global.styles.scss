@@ -1,0 +1,23 @@
+@import "colors";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-family: "Montserrat";
+}
+
+body {
+    background: $lightGray;
+}
+
+ul {
+    list-style: none;
+}

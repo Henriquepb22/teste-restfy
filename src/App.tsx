@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import Layout from "./components/Layout";
+import PaymentCycleSelect from "./components/PaymentCycleSelect";
+import PlansList from "./components/PlansList";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/global.styles.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Layout>
+            <PaymentCycleSelect />
+            <PlansList />
+        </Layout>
+    );
 }
 
 export default App;
