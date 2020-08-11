@@ -31,7 +31,7 @@ const PlanInfoPrices: React.FC<PlanInfoPricesProps> = ({
             </div>
             <a
                 type="button"
-                href={`?a=add&pid=${productId}&billingcycle=${billingCycle}${
+                href={`#?a=add&pid=${productId}&billingcycle=${billingCycle}${
                     promoCode ? `&promocode=${promoCode}` : ""
                 }`}
                 className={`buy-plan-button ${

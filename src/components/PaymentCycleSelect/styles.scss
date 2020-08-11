@@ -1,0 +1,16 @@
+@import "colors";
+
+.payment-select-wrapper {
+    margin-top: 1rem;
+}
+
+.form-label {
+    color: $blue;
+}
+
+.form-group {
+    background-color: $white;
+    border-radius: 20px;
+    border: 2px solid $blue;
+    padding: 5px 10px;
+}

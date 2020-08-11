@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 
 import { changeMonthlyPayment } from "../../actions";
 
+import "./styles.scss";
+
 type Props = {
     monthlyPaymentChange: (month: number) => void;
 };
@@ -16,7 +18,10 @@ const PaymentCycleSelect: React.FC<Props> = ({ monthlyPaymentChange }) => {
     };
 
     return (
-        <Row as="section" className="justify-content-center text-center">
+        <Row
+            as="section"
+            className="justify-content-center text-center payment-select-wrapper"
+        >
             <Form>
                 <Form.Label>Quero pagar a cada:</Form.Label>
                 <Form.Group
