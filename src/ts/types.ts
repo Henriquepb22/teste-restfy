@@ -1,3 +1,7 @@
+export interface GlobalState {
+    months: number;
+}
+
 export type ChangeMonthlyPaymentAction = (
     months: number
 ) => ChangeMonthlyAction;
@@ -22,6 +26,7 @@ export interface PlanInfo {
 export interface PlanPackageProps {
     name: string;
     payment: Cycle;
+    recommended?: boolean;
 }
 
 type PaymentCycle = {

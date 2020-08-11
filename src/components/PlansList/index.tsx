@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 
 import { ApiResponse, PlanInfo } from "../../ts/types";
 
@@ -39,6 +40,7 @@ type Props = {
 
 const PlansList: React.FC<Props> = ({ months }) => {
     const [plans, setPlans] = useState<PlanInfo[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchPlans() {
@@ -50,49 +52,56 @@ const PlansList: React.FC<Props> = ({ months }) => {
             );
 
             setPlans(plansArray);
+            setLoading(false);
         }
         fetchPlans();
     }, []);
 
     return (
-        <Container as="section" fluid>
-            <Slider {...sliderSettings}>
-                {plans?.map((plan) => {
-                    if (months === 36) {
-                        return (
-                            plan.cycle?.triennially && (
-                                <PlanPackage
-                                    key={plan.id}
-                                    name={plan.name}
-                                    payment={plan.cycle.triennially}
-                                />
-                            )
-                        );
-                    }
-                    if (months === 12) {
-                        return (
-                            plan.cycle?.annually && (
-                                <PlanPackage
-                                    key={plan.id}
-                                    name={plan.name}
-                                    payment={plan.cycle.annually}
-                                />
-                            )
-                        );
-                    }
-                    if (months === 1) {
-                        return (
-                            plan.cycle?.monthly && (
-                                <PlanPackage
-                                    key={plan.id}
-                                    name={plan.name}
-                                    payment={plan.cycle.monthly}
-                                />
-                            )
-                        );
-                    }
-                })}
-            </Slider>
+        <Container as="section" fluid className="text-center">
+            {loading ? (
+                <Spinner animation="border" />
+            ) : (
+                <Slider {...sliderSettings}>
+                    {plans.map((plan) => {
+                        if (months === 36) {
+                            return (
+                                plan.cycle?.triennially && (
+                                    <PlanPackage
+                                        key={plan.id}
+                                        name={plan.name}
+                                        payment={plan.cycle.triennially}
+                                        recommended
+                                    />
+                                )
+                            );
+                        }
+                        if (months === 12) {
+                            return (
+                                plan.cycle?.annually && (
+                                    <PlanPackage
+                                        key={plan.id}
+                                        name={plan.name}
+                                        payment={plan.cycle.annually}
+                                    />
+                                )
+                            );
+                        }
+                        if (months === 1) {
+                            return (
+                                plan.cycle?.monthly && (
+                                    <PlanPackage
+                                        key={plan.id}
+                                        name={plan.name}
+                                        payment={plan.cycle.monthly}
+                                    />
+                                )
+                            );
+                        }
+                        return null;
+                    })}
+                </Slider>
+            )}
         </Container>
     );
 };

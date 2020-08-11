@@ -1,11 +1,7 @@
 import { CHANGE_MONTHLY_PAYMENT } from "../ts/constants";
-import { ChangeMonthlyAction } from "../ts/types";
+import { ChangeMonthlyAction, GlobalState } from "../ts/types";
 
-type State = {
-    months: number;
-};
-
-export const initialState: State = {
+export const initialState: GlobalState = {
     months: 36,
 };
 

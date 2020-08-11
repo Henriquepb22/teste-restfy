@@ -1,0 +1,20 @@
+@import "colors";
+
+.package-content-list {
+    padding: 1.4rem 1rem 0.4rem;
+    text-align: left;
+    line-height: 1.9;
+
+    > li > span.highlight {
+        cursor: pointer;
+        border-bottom: 1px dashed $blue;
+    }
+}
+
+@media (max-width: 496px) {
+    .package-content-list {
+        font-size: 0.8rem;
+        line-height: 1.7;
+        white-space: nowrap;
+    }
+}
