@@ -1,7 +1,7 @@
 import { CHANGE_MONTHLY_PAYMENT } from "../ts/constants";
-import { ChangeMonthlyAction } from "../ts/types";
+import { ChangeMonthlyPaymentAction } from "../ts/types";
 
-export const changeMonthly: ChangeMonthlyAction = (months) => {
+export const changeMonthlyPayment: ChangeMonthlyPaymentAction = (months) => {
     return {
         type: CHANGE_MONTHLY_PAYMENT,
         months,

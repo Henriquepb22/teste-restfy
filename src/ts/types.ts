@@ -1,6 +1,8 @@
-export type ChangeMonthlyAction = (months: number) => ChangeMonthlyReducer;
+export type ChangeMonthlyPaymentAction = (
+    months: number
+) => ChangeMonthlyAction;
 
-export interface ChangeMonthlyReducer {
+export interface ChangeMonthlyAction {
     type: string;
     months: number;
 }
@@ -14,20 +16,22 @@ export interface ApiResponse {
 export interface PlanInfo {
     id: number;
     name: string;
-    cycle: {
-        monthly: Cycle;
-        semiannually: Cycle;
-        biennially: Cycle;
-        triennially: Cycle;
-        quarterly: Cycle;
-        annually: Cycle;
-    };
+    cycle: PaymentCycle;
 }
 
 export interface PlanPackageProps {
     name: string;
-    price: string;
+    payment: Cycle;
 }
+
+type PaymentCycle = {
+    monthly: Cycle;
+    semiannually: Cycle;
+    biennially: Cycle;
+    triennially: Cycle;
+    quarterly: Cycle;
+    annually: Cycle;
+};
 
 type Cycle = {
     priceRenew: string;

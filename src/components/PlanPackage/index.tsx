@@ -3,11 +3,20 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaServer, FaInfoCircle } from "react-icons/fa";
 
+import calculatePrices from "../../utils/calculatePrices";
+import formatPrices from "../../utils/formatPrices";
 import { PlanPackageProps } from "../../ts/types";
 
 import "./styles.scss";
 
-const PlanPackage: React.FC<PlanPackageProps> = ({ name, price }) => {
+const PlanPackage: React.FC<PlanPackageProps> = ({ name, payment }) => {
+    const {
+        totalPrice,
+        discount,
+        monthlyValue,
+        discountValue,
+    } = calculatePrices(payment.priceOrder, payment.months);
+
     return (
         <div className="text-center plan-package-wrapper">
             <header className="package-header">
@@ -16,11 +25,12 @@ const PlanPackage: React.FC<PlanPackageProps> = ({ name, price }) => {
             </header>
             <div className="package-prices">
                 <p>
-                    <span>R$ {price}</span> <strong>R$ 453,35</strong>
+                    <span>R$ {formatPrices(totalPrice)}</span>{" "}
+                    <strong>R$ {formatPrices(discount)}</strong>
                 </p>
                 <p>equivalente a</p>
                 <h5>
-                    R$ <strong>12,59</strong>/mês
+                    R$ <strong>{formatPrices(monthlyValue)}</strong>/mês
                 </h5>
             </div>
             <button className="buy-plan-button">Contrate Agora</button>
@@ -32,7 +42,7 @@ const PlanPackage: React.FC<PlanPackageProps> = ({ name, price }) => {
                     </strong>
                 </p>
                 <p>
-                    economize R$ 174,48{" "}
+                    economize R$ {formatPrices(discountValue)}{" "}
                     <span className="discount-percent">40% OFF</span>
                 </p>
             </div>

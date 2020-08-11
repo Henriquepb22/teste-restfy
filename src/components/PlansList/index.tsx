@@ -54,20 +54,44 @@ const PlansList: React.FC<Props> = ({ months }) => {
         fetchPlans();
     }, []);
 
-    useEffect(() => {
-        console.log(months);
-    }, [months]);
-
     return (
         <Container as="section" fluid>
             <Slider {...sliderSettings}>
-                {plans?.map((plan) => (
-                    <PlanPackage
-                        key={plan.id}
-                        name={plan.name}
-                        price="123,12"
-                    />
-                ))}
+                {plans?.map((plan) => {
+                    if (months === 36) {
+                        return (
+                            plan.cycle?.triennially && (
+                                <PlanPackage
+                                    key={plan.id}
+                                    name={plan.name}
+                                    payment={plan.cycle.triennially}
+                                />
+                            )
+                        );
+                    }
+                    if (months === 12) {
+                        return (
+                            plan.cycle?.annually && (
+                                <PlanPackage
+                                    key={plan.id}
+                                    name={plan.name}
+                                    payment={plan.cycle.annually}
+                                />
+                            )
+                        );
+                    }
+                    if (months === 1) {
+                        return (
+                            plan.cycle?.monthly && (
+                                <PlanPackage
+                                    key={plan.id}
+                                    name={plan.name}
+                                    payment={plan.cycle.monthly}
+                                />
+                            )
+                        );
+                    }
+                })}
             </Slider>
         </Container>
     );
