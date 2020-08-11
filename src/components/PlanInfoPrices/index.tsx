@@ -1,19 +1,16 @@
 import React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 
+import { PlanInfoPricesProps } from "../../ts/types";
+
 import formatPrices from "../../utils/formatPrices";
 
 import "./styles.scss";
 
-type Props = {
-    totalPrice: number;
-    discount: number;
-    monthlyValue: number;
-    discountValue: number;
-    recommended?: boolean;
-};
-
-const PlanInfoPrices: React.FC<Props> = ({
+const PlanInfoPrices: React.FC<PlanInfoPricesProps> = ({
+    productId,
+    billingCycle,
+    promoCode,
     totalPrice,
     discount,
     monthlyValue,
@@ -32,13 +29,17 @@ const PlanInfoPrices: React.FC<Props> = ({
                     R$ <strong>{formatPrices(monthlyValue)}</strong>/mês
                 </h5>
             </div>
-            <button
+            <a
+                type="button"
+                href={`?a=add&pid=${productId}&billingcycle=${billingCycle}${
+                    promoCode ? `&promocode=${promoCode}` : ""
+                }`}
                 className={`buy-plan-button ${
                     recommended ? "recommended" : ""
                 }`}
             >
                 Contrate Agora
-            </button>
+            </a>
             <div className="package-info">
                 <p>
                     <strong>

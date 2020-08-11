@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import Row from "react-bootstrap/Row";
@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
         dispatch(changeMonthlyPayment(months)),
 });
 
-export default connect(null, mapDispatchToProps)(PaymentCycleSelect);
+export default connect(null, mapDispatchToProps)(memo(PaymentCycleSelect));

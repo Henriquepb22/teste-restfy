@@ -24,8 +24,21 @@ export interface PlanInfo {
 }
 
 export interface PlanPackageProps {
+    id: number;
+    billingCycle: string;
     name: string;
     payment: Cycle;
+    recommended?: boolean;
+}
+
+export interface PlanInfoPricesProps {
+    productId: number;
+    billingCycle: string;
+    promoCode?: string;
+    totalPrice: number;
+    discount: number;
+    monthlyValue: number;
+    discountValue: number;
     recommended?: boolean;
 }
 

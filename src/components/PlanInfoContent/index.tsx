@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
@@ -46,4 +46,4 @@ const PlanInfoContent: React.FC = () => {
     );
 };
 
-export default PlanInfoContent;
+export default memo(PlanInfoContent);

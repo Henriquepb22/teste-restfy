@@ -35,6 +35,8 @@
 
     &:focus,
     &:hover {
+        color: $white;
+        text-decoration: none;
         transition: opacity 0.4s;
         opacity: 0.7;
     }

@@ -43,6 +43,7 @@ const PlansList: React.FC<Props> = ({ months }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         async function fetchPlans() {
             const res = await api.get<ApiResponse>("/prices");
 
@@ -69,8 +70,10 @@ const PlansList: React.FC<Props> = ({ months }) => {
                                 plan.cycle?.triennially && (
                                     <PlanPackage
                                         key={plan.id}
+                                        id={plan.id}
                                         name={plan.name}
                                         payment={plan.cycle.triennially}
+                                        billingCycle="triennialy"
                                         recommended
                                     />
                                 )
@@ -81,8 +84,10 @@ const PlansList: React.FC<Props> = ({ months }) => {
                                 plan.cycle?.annually && (
                                     <PlanPackage
                                         key={plan.id}
+                                        id={plan.id}
                                         name={plan.name}
                                         payment={plan.cycle.annually}
+                                        billingCycle="annually"
                                     />
                                 )
                             );
@@ -92,8 +97,10 @@ const PlansList: React.FC<Props> = ({ months }) => {
                                 plan.cycle?.monthly && (
                                     <PlanPackage
                                         key={plan.id}
+                                        id={plan.id}
                                         name={plan.name}
                                         payment={plan.cycle.monthly}
+                                        billingCycle="monthly"
                                     />
                                 )
                             );

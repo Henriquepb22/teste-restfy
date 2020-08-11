@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { FaServer } from "react-icons/fa";
 
 import "./styles.scss";
@@ -16,4 +16,4 @@ const PlanInfoHeader: React.FC<Props> = ({ name }) => {
     );
 };
 
-export default PlanInfoHeader;
+export default memo(PlanInfoHeader);

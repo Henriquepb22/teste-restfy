@@ -11,8 +11,10 @@ import PlanInfoPrices from "../PlanInfoPrices";
 import "./styles.scss";
 
 const PlanPackage: React.FC<PlanPackageProps> = ({
+    id,
     name,
     payment,
+    billingCycle,
     recommended,
 }) => {
     const {
@@ -30,6 +32,9 @@ const PlanPackage: React.FC<PlanPackageProps> = ({
         >
             <PlanInfoHeader name={name} />
             <PlanInfoPrices
+                productId={id}
+                billingCycle={billingCycle}
+                promoCode="PROMO40"
                 totalPrice={totalPrice}
                 discount={discount}
                 monthlyValue={monthlyValue}
