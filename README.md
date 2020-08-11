@@ -28,7 +28,10 @@ This project was made with [React](https://pt-br.reactjs.org/), [Redux](https://
     yarn
     ```
     
-5. After installing all dependencies you can run the app:
+5. **(Important)** After installing all dependencies change the **.env.example** file name to **.env**:
+
+
+6. Then run the app:
     ```bash
     # with npm
     npm run start
@@ -38,7 +41,7 @@ This project was made with [React](https://pt-br.reactjs.org/), [Redux](https://
     
     With this the project will be running on [localhost:3000](http://localhost:3000/)!
     
-6. (Optional) You can bundle the app to production be running the following commands:
+7. (Optional) You can bundle the app to production be running the following commands:
     ```bash
     # on the project folder with npm
     npm run build
