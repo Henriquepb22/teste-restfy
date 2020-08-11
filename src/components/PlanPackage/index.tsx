@@ -1,20 +1,22 @@
 import React from "react";
-import { FaServer, FaInfoCircle } from "react-icons/fa";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaServer, FaInfoCircle } from "react-icons/fa";
+
+import { PlanPackageProps } from "../../ts/types";
 
 import "./styles.scss";
 
-const PlanPackage: React.FC = () => {
+const PlanPackage: React.FC<PlanPackageProps> = ({ name, price }) => {
     return (
         <div className="text-center plan-package-wrapper">
-            <div className="package-header">
+            <header className="package-header">
                 <FaServer size={30} color="#3f7ec1" />
-                <h4>Plano M</h4>
-            </div>
+                <h4>{name}</h4>
+            </header>
             <div className="package-prices">
                 <p>
-                    <span>R$ 647,64</span> <strong>R$ 453,35</strong>
+                    <span>R$ {price}</span> <strong>R$ 453,35</strong>
                 </p>
                 <p>equivalente a</p>
                 <h5>
@@ -34,7 +36,7 @@ const PlanPackage: React.FC = () => {
                     <span className="discount-percent">40% OFF</span>
                 </p>
             </div>
-            <ul className="package-content">
+            <ul className="package-content-list">
                 <li>
                     <OverlayTrigger
                         placement="bottom"

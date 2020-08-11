@@ -1,12 +1,18 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
+import { Dispatch } from "redux";
 
-const PaymentCycleSelect: React.FC = () => {
-    const [selectedPaymentCycle, setSelectedPaymentCycle] = useState(36);
+import { changeMonthly } from "../../actions";
 
-    const handleOptionChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSelectedPaymentCycle(Number(e.target.value));
+type Props = {
+    changeMonthlyPayment: (month: number) => void;
+};
+
+const PaymentCycleSelect: React.FC<Props> = ({ changeMonthlyPayment }) => {
+    const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        changeMonthlyPayment(Number(e.target.value));
     };
 
     return (
@@ -14,7 +20,7 @@ const PaymentCycleSelect: React.FC = () => {
             <Form>
                 <Form.Label>Quero pagar a cada:</Form.Label>
                 <Form.Group
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         handleOptionChange(e)
                     }
                 >
@@ -49,4 +55,8 @@ const PaymentCycleSelect: React.FC = () => {
     );
 };
 
-export default PaymentCycleSelect;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    changeMonthlyPayment: (months: number) => dispatch(changeMonthly(months)),
+});
+
+export default connect(null, mapDispatchToProps)(PaymentCycleSelect);

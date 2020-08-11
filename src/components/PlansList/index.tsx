@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Slider from "react-slick";
 import Container from "react-bootstrap/Container";
+
+import { ApiResponse, PlanInfo } from "../../ts/types";
+
+import api from "../../services/api";
 
 import PlanPackage from "../PlanPackage";
 
@@ -28,16 +33,48 @@ const sliderSettings = {
     ],
 };
 
-const PlansList: React.FC = () => {
+type Props = {
+    months: number;
+};
+
+const PlansList: React.FC<Props> = ({ months }) => {
+    const [plans, setPlans] = useState<PlanInfo[]>([]);
+
+    useEffect(() => {
+        async function fetchPlans() {
+            const res = await api.get<ApiResponse>("/prices");
+
+            // Convertendo a resposta da api para um array de objetos
+            const plansArray: PlanInfo[] = Object.values(
+                res.data.shared.products
+            );
+
+            setPlans(plansArray);
+        }
+        fetchPlans();
+    }, []);
+
+    useEffect(() => {
+        console.log(months);
+    }, [months]);
+
     return (
         <Container as="section" fluid>
             <Slider {...sliderSettings}>
-                <PlanPackage />
-                <PlanPackage />
-                <PlanPackage />
+                {plans?.map((plan) => (
+                    <PlanPackage
+                        key={plan.id}
+                        name={plan.name}
+                        price="123,12"
+                    />
+                ))}
             </Slider>
         </Container>
     );
 };
 
-export default PlansList;
+const mapStateToProps = (state: Props) => ({
+    months: state.months,
+});
+
+export default connect(mapStateToProps)(PlansList);
